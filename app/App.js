@@ -1,8 +1,8 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Rebase = require('re-base');
-var List = require('./List');
-var AddItem = require('./AddItem');
+var React = require('react')
+var ReactDOM = require('react-dom')
+var Rebase = require('re-base')
+var List = require('./List')
+var AddItem = require('./AddItem')
 
 var base = Rebase.createClass({
   apiKey: "AIzaSyCkjw7EOUP5qPNNBEj9w1wlkQp-qsJGt4c",
@@ -10,43 +10,54 @@ var base = Rebase.createClass({
   databaseURL: "https://learnfirebase-977b6.firebaseio.com",
   storageBucket: "learnfirebase-977b6.appspot.com",
   messagingSenderId: "249144026512"
-});
-console.log('Please change to your own firebase address in app/App.js');
+})
+console.log('Please change to your own firebase address in app/App.js')
+
+const protoTypeObject = {
+  1: {
+    dob: 'November 28, 1988',
+    name: 'Shobhit Agarwal',
+  },
+  2: {
+    dob: 'June 23, 1912',
+    name: 'Alan Turing',
+  }
+}
 
 class App extends React.Component{
   constructor(props){
-    super(props);
+    super(props)
     this.state = {
       list: [],
       loading: true
     }
   }
-  componentDidMount(){
+  componentDidMount() {
     this.ref = base.syncState('todoList', {
       context: this,
       state: 'list',
       asArray: true,
       then(){
-        this.setState({loading: false})
+        this.setState({ loading: false })
       }
-    });
+    })
   }
-  componentWillUnmount(){
-    base.removeBinding(this.ref);
+  componentWillUnmount() {
+    base.removeBinding(this.ref)
   }
-  handleAddItem(newItem){
+  handleAddItem(newItem) {
     this.setState({
       list: this.state.list.concat([newItem])
-    });
+    })
   }
-  handleRemoveItem(index){
-    var newList = this.state.list;
-    newList.splice(index, 1);
+  handleRemoveItem(index) {
+    var newList = this.state.list
+    newList.splice(index, 1)
     this.setState({
       list: newList
     })
   }
-  render(){
+  render() {
     return (
       <div className="container">
         <div className="row">
@@ -61,6 +72,6 @@ class App extends React.Component{
       </div>
     )
   }
-};
+}
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'))

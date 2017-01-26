@@ -31,7 +31,7 @@ class List extends React.Component{
             onClick={this.props.remove.bind(null, index)}
           />
           <span style={styles.todoItem}>
-            {item}
+            {`${item.name} - ${item.dob}`}
           </span>
         </li>
       )
