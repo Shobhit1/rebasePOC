@@ -9,12 +9,13 @@ class AddItem extends React.Component{
       this.props.add({ name: name.value, dob: dob.value })
       name.value = ''
       dob.value = ''
+      name.focus()
     }
   }
   render() {
     return (
-      <div className="col-sm-6 text-center">
-        <div className="col-sm-12 text-center">
+      <div className="col-md-8 text-center">
+        <div className="col-md-6 text-center">
           <input
             type="text"
             ref={(node) => this.name = node}
@@ -23,7 +24,7 @@ class AddItem extends React.Component{
             onKeyDown={this.handleSubmit.bind(this)}
           />
         </div>
-        <div className="col-sm-12 text-center">
+        <div className="col-md-6 text-center">
             <input
               type="text"
               ref={(node) => this.dob = node}

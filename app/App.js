@@ -33,7 +33,7 @@ class App extends React.Component{
     }
   }
   componentDidMount() {
-    this.ref = base.syncState('todoList', {
+    this.ref = base.syncState('Test/1', {
       context: this,
       state: 'list',
       asArray: true,
@@ -57,6 +57,13 @@ class App extends React.Component{
       list: newList
     })
   }
+  handleChange(index, newValue) {
+    const { list } = this.state
+    list[index] = newValue
+    this.setState({
+      list: list
+    })
+  }
   render() {
     return (
       <div className="container">
@@ -65,7 +72,13 @@ class App extends React.Component{
             <div className="col-sm-12">
               <h3 className="text-center"> re-base Todo List </h3>
               <AddItem add={this.handleAddItem.bind(this)}/>
-              {this.state.loading === true ? <h3> LOADING... </h3> : <List items={this.state.list} remove={this.handleRemoveItem.bind(this)}/>}
+              {
+                this.state.loading === true
+                ?
+                <h3> LOADING... </h3>
+                :
+                <List items={this.state.list} remove={this.handleRemoveItem.bind(this)}/>
+              }
             </div>
           </div>
         </div>

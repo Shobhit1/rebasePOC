@@ -96,7 +96,7 @@
 	  _createClass(App, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.ref = base.syncState('todoList', {
+	      this.ref = base.syncState('Test/1', {
 	        context: this,
 	        state: 'list',
 	        asArray: true,
@@ -124,6 +124,16 @@
 	      newList.splice(index, 1);
 	      this.setState({
 	        list: newList
+	      });
+	    }
+	  }, {
+	    key: 'handleChange',
+	    value: function handleChange(index, newValue) {
+	      var list = this.state.list;
+
+	      list[index] = newValue;
+	      this.setState({
+	        list: list
 	      });
 	    }
 	  }, {
@@ -161,8 +171,6 @@
 
 	  return App;
 	})(React.Component);
-
-	;
 
 	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
 
@@ -23587,6 +23595,7 @@
 	        this.props.add({ name: _name.value, dob: dob.value });
 	        _name.value = '';
 	        dob.value = '';
+	        _name.focus();
 	      }
 	    }
 	  }, {
@@ -23596,25 +23605,33 @@
 
 	      return React.createElement(
 	        'div',
-	        { className: 'col-sm-12 text-center' },
-	        React.createElement('input', {
-	          type: 'text',
-	          ref: function (node) {
-	            return _this.name = node;
-	          },
-	          className: 'form-control',
-	          placeholder: 'New Item',
-	          onKeyDown: this.handleSubmit.bind(this)
-	        }),
-	        React.createElement('input', {
-	          type: 'text',
-	          ref: function (node) {
-	            return _this.dob = node;
-	          },
-	          className: 'form-control',
-	          placeholder: 'New Item',
-	          onKeyDown: this.handleSubmit.bind(this)
-	        })
+	        { className: 'col-md-8 text-center' },
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-6 text-center' },
+	          React.createElement('input', {
+	            type: 'text',
+	            ref: function (node) {
+	              return _this.name = node;
+	            },
+	            className: 'form-control',
+	            placeholder: 'New Item',
+	            onKeyDown: this.handleSubmit.bind(this)
+	          })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-6 text-center' },
+	          React.createElement('input', {
+	            type: 'text',
+	            ref: function (node) {
+	              return _this.dob = node;
+	            },
+	            className: 'form-control',
+	            placeholder: 'New Item',
+	            onKeyDown: this.handleSubmit.bind(this)
+	          })
+	        )
 	      );
 	    }
 	  }]);
